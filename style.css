@@ -1,8 +1,43 @@
-body {
-    font-family: monospace;
+* {
+  box-sizing: border-box;
 }
 
-header {
-    text-align: center;
-    border-bottom: 2px solid rgb(50, 50, 50);
+body {
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+}
+
+#header {
+  padding: 1em 2em;
+  text-align: center;
+  border-bottom: 2px solid rgb(50, 50, 50);
+}
+
+#headerTitle {
+  font-size: 2em;
+  margin: 0.2em 0;
+}
+
+#main {
+  padding: 0 1em;
+}
+
+#nav {
+  margin-top: 1em;
+}
+
+#navTitle {
+  margin: 0;
+  font-size: 1.4em;
+}
+
+.nav-list {
+  padding-left: 0.8em;
+  list-style-type: none;
+}
+
+.nav-item {
+  padding: 0.2em 0;
+  font-size: 1rem;
 }
