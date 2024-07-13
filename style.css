@@ -1,0 +1,8 @@
+body {
+    font-family: monospace;
+}
+
+header {
+    text-align: center;
+    border-bottom: 2px solid rgb(50, 50, 50);
+}
