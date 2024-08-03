@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>It's just a website</title>
 </head>
 <body>
     <header>
-        <p class="header-title">It's just a website<span>:D</span></p>
+        <img src="src/header_logo.svg" alt="LOGO" class="header-logo">
     </header>
     <div class="main-wrapper">
         <aside>
             <div class="nav">
                  <p class="nav-title">Navigation</p>
-                 <div class="nav-section">
+                 <!-- <div class="nav-section">
                     <p class="nav-section-title">WEB Guides:</p>
                     <ol class="nav-section-list">
                         <li class="nav-section-list-item"><i>nothing</i></li>
@@ -26,15 +26,30 @@
                         <li class="nav-section-list-item"><a href="rio-sk-site/">RIO-SK site</a></li>
                         <li class="nav-section-list-item"><a href="burger-joint-template-site/">Burger joint template site</a></li>
                     </ol>
-                </div>
+                </div> -->
             </div>
         </aside>
         <main>
-            
+            <div id="page">
+                <div id="pageHeader">
+                    <div id="pagePathWrapper">
+                        <!-- HOME/ -->
+                        <p id="pagePath"></p>
+                    </div>
+                    <!-- Title -->
+                    <p id="pageTitle"></p>
+                </div>
+                <div id="pageContent">
+                    <!-- home/home.html -->
+                    <iframe src="#" frameborder="0"  id="pageIframe"></iframe>
+                </div>
+            </div>
         </main>
     </div>
     <footer>
-        <p class="copy">&copy; Just a footer</p>
+        <p class="copy">&copy; Just the most banal footer in 2024</p>
     </footer>
+
+    <script src="scripts/index.js"></script>
 </body>
 </html>
