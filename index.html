@@ -10,46 +10,136 @@
     <header>
         <img src="src/header_logo.svg" alt="LOGO" class="header-logo">
     </header>
-    <div class="main-wrapper">
-        <aside>
-            <div class="nav">
-                 <p class="nav-title">Navigation</p>
-                 <!-- <div class="nav-section">
-                    <p class="nav-section-title">WEB Guides:</p>
-                    <ol class="nav-section-list">
-                        <li class="nav-section-list-item"><i>nothing</i></li>
-                    </ol>
+    <main>
+        <div class="sidebar">
+            <div class="sidebar-inner">
+                <div class="side-container">
+                    <p class="side-container-title">Navigation</p>
+                        <div class="side-container-content">
+
+                        </div>
+                         <!-- <div class="nav-section">
+                            <p class="nav-section-title">WEB Guides:</p>
+                            <ol class="nav-section-list">
+                                <li class="nav-section-list-item"><i>nothing</i></li>
+                            </ol>
+                        </div>
+                        <div class="nav-section">
+                            <p class="nav-section-title">My websites:</p>
+                            <ol class="nav-section-list">
+                                <li class="nav-section-list-item"><a href="rio-sk-site/">RIO-SK site</a></li>
+                                <li class="nav-section-list-item"><a href="burger-joint-template-site/">Burger joint template site</a></li>
+                            </ol>
+                        </div> -->
                 </div>
-                <div class="nav-section">
-                    <p class="nav-section-title">My websites:</p>
-                    <ol class="nav-section-list">
-                        <li class="nav-section-list-item"><a href="rio-sk-site/">RIO-SK site</a></li>
-                        <li class="nav-section-list-item"><a href="burger-joint-template-site/">Burger joint template site</a></li>
-                    </ol>
-                </div> -->
-            </div>
-        </aside>
-        <main>
-            <div id="page">
-                <div id="pageHeader">
-                    <div id="pagePathWrapper">
-                        <!-- HOME/ -->
-                        <p id="pagePath"></p>
+                <div class="side-container">
+                    <p class="side-container-title">Contact me</p>
+                    <div class="side-container-content">
+
                     </div>
-                    <!-- Title -->
-                    <p id="pageTitle"></p>
-                </div>
-                <div id="pageContent">
-                    <!-- home/home.html -->
-                    <iframe src="#" frameborder="0"  id="pageIframe"></iframe>
                 </div>
             </div>
-        </main>
-    </div>
+            <div class="sidebar-toggle-wrapper" id="sidebarToggle">
+                <svg width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="sidebar-toggle" id="sidebarToggleArrow">
+                    <g clip-path="url(#clip0_203_3)">
+                        <path d="M1.25 22.6726L10.6923 12" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M1.25 1.32739L10.6923 12" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_203_3">
+                            <rect width="12" height="24" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+        <div class="content">
+            <div class="page">
+                <div class="page-header">
+                    <div class="page-path-wrapper">
+
+                        <p id="pagePath" class="page-path">HOME/</p>
+                    </div>
+
+                    <p id="pageTitle" class="page-title">HOME</p>
+                </div>
+                <div class="page-content">
+                        <iframe src="home/home.html" frameborder="0" id="iframe" class="iframe"></iframe>
+                </div>
+            </div>
+        </div>
+
+    </main>
     <footer>
         <p class="copy">&copy; Just the most banal footer in 2024</p>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", onDOMReady);
+        function onDOMReady() {
+            let windowInnerWidth = document.documentElement.clientWidth;
+            const sidebar = document.querySelector('.sidebar');
+            const sidebarToggle = document.querySelector('#sidebarToggle');
+            const sidebarToggleArrow = document.querySelector('#sidebarToggleArrow')
+            const content = document.querySelector('.content');
+
+            let isOnSmallScreen = windowInnerWidth > 767 ? false : true;
+            let isSidebarOpened = isOnSmallScreen ? false : true;
+
+            window.addEventListener('resize', () => {
+                toggleDefaultSidebarPos();
+            });
+
+            function toggleDefaultSidebarPos() {
+                windowInnerWidth = document.documentElement.clientWidth;
+                if (windowInnerWidth > 767) {
+                    isOnSmallScreen = false;
+                    isSidebarOpened = true;
+                    openSidebar()
+                } else {
+                    isOnSmallScreen = true;
+                    isSidebarOpened = false;
+                    closeSidebar()
+                }
+            }
+            toggleDefaultSidebarPos();
+
+            sidebarToggle.addEventListener('click', toggleSidebar);
+            function toggleSidebar() {
+                isSidebarOpened = isSidebarOpened ? false : true;
+
+                if (isSidebarOpened) {
+                    openSidebar()
+                } else {
+                    closeSidebar()
+                }
+            }
+
+            function openSidebar() {
+                sidebarToggleArrow.style.transform = 'rotate(180deg)';
+                sidebar.style.left = 0;
+
+                if (isOnSmallScreen) {
+                    sidebar.style.borderRight = '2px solid rgb(50, 50, 50)';
+                    content.style.marginLeft = sidebarToggle.offsetWidth + 'px';
+                } else {
+                    content.style.marginLeft = sidebar.offsetWidth + 'px';
+                }
+            }
+
+            function closeSidebar() {
+                sidebarToggleArrow.style.transform = 'rotate(0)';
+                sidebar.style.left = -sidebar.offsetWidth + sidebarToggle.offsetWidth + 'px';
+
+                if (isOnSmallScreen) {
+                    sidebar.style.borderRight = 'none';
+                    content.style.marginLeft = sidebarToggle.offsetWidth + 'px';
+                } else {
+                    content.style.marginLeft = sidebarToggle.offsetWidth + 'px';
+                }
+            }
+        }
+    </script>
     <script src="scripts/index.js"></script>
 </body>
 </html>

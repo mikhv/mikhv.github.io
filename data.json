@@ -1,6 +1,13 @@
 {
     "pages": [
         {
+            "navSectionTitle": "",
+            "linkText": "home",
+            "link": "home/"
+
+
+        },
+        {
             "nav_section_name": "WEB guides",
             "link_text": "RIO-SK site",
             "link": "rio-sk-site/",

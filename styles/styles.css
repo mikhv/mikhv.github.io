@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+*:hover, *:hover * {
+  transition: 0.2s linear;
+}
+
 p {
   margin: 0;
 }
@@ -28,28 +32,43 @@ header {
 }
 
 .header-logo {
+  display: block;
   height: 3em;
-  margin-left: 1em;
+  max-width: 100%;
 }
 
-.main-wrapper {
+main {
   flex-grow: 1;
   display: flex;
+  position: relative;
+  padding: 1em 0;
+  padding-right: 1em;
+}
+
+.sidebar {
+  display: flex;
   flex-direction: row;
-  padding: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 1em 0;
+  padding-left: 1em;
+  background-color: rgb(255, 255, 255);
+  z-index: 99;
 }
 
-aside {
-  margin-right: 1em;
-}
-
-.nav {
+.sidebar-inner {
   min-width: 300px;
+}
+
+.side-container {
   padding: 1em;
   border: 2px solid rgb(50, 50, 50);
+  margin-bottom: 1em;
 }
 
-.nav-title {
+.side-container-title {
   margin-bottom: 0.25em;
   padding-bottom: 0.25em;
   text-align: center;
@@ -58,7 +77,11 @@ aside {
   border-bottom: 2px solid rgb(50, 50, 50);
 }
 
-.nav-section {
+.side-container-content {
+
+}
+
+/* .nav-section {
   margin: 0.75em 0;
   justify-content: left;
   font-size: 1.5em;
@@ -75,46 +98,55 @@ aside {
 
 .nav-section-list-item {
 
+} */
+
+.sidebar-toggle-wrapper {
+  padding: 0 1em;
 }
 
-main {
+.sidebar-toggle {
+  margin-top: 0.25em;
+}
+
+.content {
   flex-grow: 1;
 }
 
-#page {
+.page {
   display: flex;
   flex-direction: column;
   min-height: 100%;
 }
 
-#pageHeader {
+.page-header {
 
 }
 
-#pagePathWrapper {
+.page-path-wrapper {
   display: inline-block;
   margin-bottom: 1em;
   padding: 0.4em 0.8em;
   background-color: rgb(200, 200, 200);
 }
 
-#pagePath {
+.page-path {
   display: inline;
   font-size: 1.3em;
 }
 
-#pageTitle {
+.page-title {
   margin-bottom: 0.5em;
   font-size: 2em;
 }
 
-#pageContent {
+.page-content {
   position: relative;
   flex-grow: 1;
   border: 2px solid rgb(50, 50, 50);
+  /* border-bottom: 2px solid rgb(50, 50, 50); */
 }
 
-#pageIframe {
+.iframe {
   position: absolute;
   top: 0;
   left: 0;
