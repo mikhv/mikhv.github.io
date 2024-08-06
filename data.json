@@ -1,20 +1,48 @@
 {
+    "navSections": [
+        {
+            "sectionId": "0",
+            "sectionTitle": ""
+        },
+        {
+            "sectionId": "1",
+            "sectionTitle": "HTML CSS Guides"
+        },
+        {
+            "sectionId": "2",
+            "sectionTitle": "JS Guides"
+        },
+        {
+            "sectionId": "3",
+            "sectionTitle": "HTML CSS Templates"
+        },
+        {
+            "sectionId": "4",
+            "sectionTitle": "My projects"
+        },
+        {
+            "sectionId": "5",
+            "sectionTitle": "My websites"
+        }
+    ],
     "pages": [
         {
-            "navSectionTitle": "",
-            "linkText": "home",
-            "link": "home/"
-
-
+            "sectionId": "0",
+            "pageId": "00",
+            "link": "home/",
+            "title": "Home"
         },
         {
-            "nav_section_name": "WEB guides",
-            "link_text": "RIO-SK site",
+            "sectionId": "5",
+            "pageId": "50",
+            "link": "burger-joint-template-site/",
+            "title": "Burger joint template site"
+        },
+        {
+            "sectionId": "5",
+            "pageId": "51",
             "link": "rio-sk-site/",
-            "displayed_path": "RIO-SK_site"
-        },
-        {
-
+            "title": "RIO-SK site"
         }
     ]
 }
