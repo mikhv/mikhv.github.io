@@ -1,46 +1,37 @@
 {
     "navSections": [
         {
-            "sectionId": "0",
-            "sectionTitle": ""
+            "sectionTitle": "home"
         },
         {
-            "sectionId": "1",
             "sectionTitle": "HTML CSS Guides"
         },
         {
-            "sectionId": "2",
             "sectionTitle": "JS Guides"
         },
         {
-            "sectionId": "3",
             "sectionTitle": "HTML CSS Templates"
         },
         {
-            "sectionId": "4",
             "sectionTitle": "My projects"
         },
         {
-            "sectionId": "5",
             "sectionTitle": "My websites"
         }
     ],
     "pages": [
         {
             "sectionId": "0",
-            "pageId": "00",
             "link": "home/",
             "title": "Home"
         },
         {
             "sectionId": "5",
-            "pageId": "50",
             "link": "burger-joint-template-site/",
             "title": "Burger joint template site"
         },
         {
             "sectionId": "5",
-            "pageId": "51",
             "link": "rio-sk-site/",
             "title": "RIO-SK site"
         }

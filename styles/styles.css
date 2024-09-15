@@ -23,6 +23,14 @@ body {
   font-family: monospace;
 }
 
+#inDevelopment {
+  padding: 0.5em;
+  text-align: center;
+  font-size: 1.4em;
+  color: rgb(255, 255, 255);
+  background-color: rgba(255, 0, 0, 0.6);
+}
+
 header, footer {
   padding: 0.6em 1em;
 }
@@ -39,10 +47,8 @@ header {
 
 main {
   flex-grow: 1;
-  display: flex;
   position: relative;
-  padding: 1em 0;
-  padding-right: 1em;
+  display: flex;
 }
 
 .sidebar {
@@ -51,15 +57,20 @@ main {
   position: absolute;
   top: 0;
   left: 0;
+
+
   height: 100%;
-  padding: 1em 0;
-  padding-left: 1em;
+
   background-color: rgb(255, 255, 255);
+  border-right: 2px solid rgb(50, 50, 50);
   z-index: 99;
 }
 
 .sidebar-inner {
-  min-width: 300px;
+  min-width: 100px;
+  max-width: 100%;
+  padding: 1em 0;
+  padding-left: 1em;
 }
 
 .side-container {
@@ -81,7 +92,7 @@ main {
 
 }
 
-/* .nav-section {
+.nav-section {
   margin: 0.75em 0;
   justify-content: left;
   font-size: 1.5em;
@@ -91,6 +102,14 @@ main {
   margin: 0.5em 0;
 }
 
+/* .nav-section-title:first-child::after {
+  content: "";
+}
+
+.nav-section-title::after {
+  content: ":";
+} */
+
 .nav-section-list {
   margin: 0;
   margin-left: 1em;
@@ -98,60 +117,52 @@ main {
 
 .nav-section-list-item {
 
-} */
+}
 
 .sidebar-toggle-wrapper {
-  padding: 0 1em;
+  padding: 1em;
 }
 
 .sidebar-toggle {
-  margin-top: 0.25em;
+  width: 1.5em;
 }
 
-.content {
-  flex-grow: 1;
+.sidebar-toggle-wrapper:hover {
+  cursor: pointer;
 }
 
 .page {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  padding: 1em;
+  /* overflow: hidden; */
 }
 
-.page-header {
-
-}
-
-.page-path-wrapper {
-  display: inline-block;
+.error-message {
+  align-self: center;
   margin-bottom: 1em;
-  padding: 0.4em 0.8em;
-  background-color: rgb(200, 200, 200);
-}
-
-.page-path {
-  display: inline;
-  font-size: 1.3em;
+  padding: 0.8em;
+  font-size: 1.2em;
+  color: rgb(255, 255, 255);
+  background-color: rgba(255, 0, 0, 0.6);
 }
 
 .page-title {
+  display: inline;
   margin-bottom: 0.5em;
   font-size: 2em;
 }
 
-.page-content {
-  position: relative;
-  flex-grow: 1;
-  border: 2px solid rgb(50, 50, 50);
-  /* border-bottom: 2px solid rgb(50, 50, 50); */
+.open-in-new-tab-button {
+  align-self: end;
+  font-size: 1.2em;
 }
 
-.iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-height: 100%;
+.page-iframe {
+  flex-grow: 1;
+  margin-top: 1em;
+  border: 0;
 }
 
 footer {
@@ -164,5 +175,7 @@ footer {
 }
 
 @media all and (max-width: 575px) {
-
+ html {
+  font-size: 11px;
+ }
 }
