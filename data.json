@@ -1,39 +1,39 @@
 {
-    "navSections": [
-        {
-            "sectionTitle": "home"
-        },
-        {
-            "sectionTitle": "HTML CSS Guides"
-        },
-        {
-            "sectionTitle": "JS Guides"
-        },
-        {
-            "sectionTitle": "HTML CSS Templates"
-        },
-        {
-            "sectionTitle": "My projects"
-        },
-        {
-            "sectionTitle": "My websites"
-        }
-    ],
-    "pages": [
-        {
-            "sectionId": "0",
-            "link": "home/",
-            "title": "Home"
-        },
-        {
-            "sectionId": "5",
-            "link": "burger-joint-template-site/",
-            "title": "Burger joint template site"
-        },
-        {
-            "sectionId": "5",
-            "link": "rio-sk-site/",
-            "title": "RIO-SK site"
-        }
-    ]
+  "navSections": [
+    {
+      "sectionTitle": "HOME"
+    },
+    {
+      "sectionTitle": "HTML CSS Guides"
+    },
+    {
+      "sectionTitle": "JS Guides"
+    },
+    {
+      "sectionTitle": "HTML CSS Templates"
+    },
+    {
+      "sectionTitle": "My projects"
+    },
+    {
+      "sectionTitle": "My websites"
+    }
+  ],
+  "pages": [
+    {
+      "sectionId": "0",
+      "link": "pages/home/",
+      "title": "Home"
+    },
+    {
+      "sectionId": "5",
+      "link": "burger-joint-template-site/",
+      "title": "Burger joint template site"
+    },
+    {
+      "sectionId": "5",
+      "link": "rio-sk-site/",
+      "title": "RIO-SK site"
+    }
+  ]
 }
