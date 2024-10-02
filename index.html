@@ -1,127 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>It's just a website</title>
+    <title>It's just a websitet</title>
 </head>
 <body>
-    <p id="inDevelopment">IN DEVELOPMENT</p>
-    <header>
-        <img src="src/header_logo.svg" alt="LOGO" class="header-logo">
-    </header>
-    <main>
-        <div class="sidebar">
-            <div class="sidebar-inner">
-                <div class="side-container">
-                    <p class="side-container-title">Navigation</p>
-                        <div class="side-container-content nav-section-wrapper">
-                            <!-- <div class="nav-section">
-                                <p class="nav-section-title"></p>
-                                <ol class="nav-section-list">
-                                    2:
-                                    <li class="nav-section-list-item"></li>
-                                </ol>
-                            </div> -->
-                        </div>
-                </div>
-                <div class="side-container">
-                    <p class="side-container-title">Contact me</p>
-                    <div class="side-container-content">
-                        <p>Email: o.v.mikhailov01@yandex.ru</p>
-                    </div>
-                </div>
-            </div>
-            <div title="Toggle sidebar" class="sidebar-toggle-wrapper" id="sidebarToggle">
-                <img src="" alt="Menu" class="sidebar-toggle" id="sidebarToggleButton">
-            </div>
-        </div>
-        <div class="page">
-            <!-- <p class="page-title"></p>
-            <a href="" class="open-in-new-tab-button">Open in new tab</a>
-            <iframe title="page" frameborder="0" class="page-iframe"></iframe> -->
-        </div>
-
-    </main>
-    <footer>
-        <p class="copy">&copy; Just the most banal footer in 2024</p>
-    </footer>
-
-    <script>
-        let contentLoaded = false;
-        document.addEventListener("DOMContentLoaded", onDOMReady);
-        function onDOMReady() {
-            const sidebar = document.querySelector('.sidebar');
-            const sidebarToggle = document.querySelector('#sidebarToggle');
-            const sidebarToggleButton = document.querySelector('#sidebarToggleButton')
-            const content = document.querySelector('.page');
-
-            let isOnSmallScreen;
-            let isSidebarOpened;
-
-            window.addEventListener('resize', toggleDefaultSidebarPos);
-
-            function toggleDefaultSidebarPos() {
-                isOnSmallScreen = document.documentElement.clientWidth > 767 ? false : true
-                if (isOnSmallScreen) {
-                    closeSidebar();
-                } else {
-                    openSidebar();
-                }
-            }
-            let interval = setInterval(function() {
-                console.log('cl: ' + contentLoaded)
-                if (contentLoaded) {
-                    toggleDefaultSidebarPos();
-                    clearInterval(interval);
-                }
-            }, 100)
-
-            sidebarToggle.addEventListener('click', toggleSidebar);
-            function toggleSidebar() {
-                if (isSidebarOpened) {
-                    closeSidebar();
-                } else {
-                    openSidebar();
-                }
-            }
-
-            function openSidebar() {
-                sidebarToggleButton.style.opacity = 0;
-                sidebarToggleButton.src = 'src/menu_close_button.svg';
-                sidebarToggleButton.style.opacity = 1;
-
-                sidebar.style.left = 0;
-
-                if (isOnSmallScreen) {
-                    content.style.marginLeft = sidebarToggle.offsetWidth + 'px';
-                } else {
-                    content.style.marginLeft = sidebar.offsetWidth + 'px';
-                }
-
-                isSidebarOpened = true;
-                console.log('open: ' + isSidebarOpened + sidebar.style.left);
-            }
-
-            function closeSidebar() {
-                sidebarToggleButton.style.opacity = 0;
-                sidebarToggleButton.src = 'src/menu_button.svg';
-                sidebarToggleButton.style.opacity = 1;
-
-                sidebar.style.left = -sidebar.clientWidth + sidebarToggle.offsetWidth + 'px';
-
-                if (isOnSmallScreen) {
-                    content.style.marginLeft = sidebarToggle.offsetWidth + 'px';
-                } else {
-                    content.style.marginLeft = sidebarToggle.offsetWidth + 'px';
-                }
-
-                isSidebarOpened = false;
-                console.log('open: ' + isSidebarOpened + sidebar.style.left);
-            }
-        }
-    </script>
+    <div id="loading"></div>
+    <div id="wrapper">
+        <header>
+            <p class="logo-text">JUST A WEBSITE</p>
+        </header>
+        <main id="content">
+            <!-- <div id="sidebar"></div>
+            <div id="page"></div> -->
+        </main>
+        <footer>
+            <p class="copy">&copy; Just the most banal footer in 2024</p>
+        </footer>
+    </div>
     <script src="scripts/index.js"></script>
 </body>
 </html>
