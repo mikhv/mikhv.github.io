@@ -1,37 +1,22 @@
-function checkLockStatus() {
-    let isLocked = sessionStorage.getItem('isLocked') === null || sessionStorage.getItem('isLocked') === undefined ? 'y' : sessionStorage.getItem('isLocked');
+// window.location.replace('blocked.html');
+// window.location.assign('blocked.html');
 
-    if (isLocked == 'y') {
-        // :D
-        window.location.replace('lockdown.html');
-        window.location.assign('lockdown.html');
-    } else {
-        sessionStorage.setItem('isLocked', 'y')
-
-    }
-}
-checkLockStatus();
-
-let pageStatus = 1; // 0 - ok; 1 - loading; -1 - have errors.
+let pageStatus = 0; // 0 - ok; 1 - loading; -1 - have errors.
 
 window.onload = function() {
+    showLoadingOverlay(document.querySelector('#loading'), document.querySelector('#wrapper'));
 
-
-    const loadingElem = document.querySelector('#loading');
-    const wrapperElem = document.querySelector('#wrapper');
-
-    showLoadingOverlay(loadingElem, wrapperElem);
-
-    let currentPageID = sessionStorage.getItem('currentPageID') == undefined ? 0 : sessionStorage.getItem('currentPageID');
-    const pageElem = document.querySelector('#content');
-
-    fetch("https://mikhv.github.io/data.json", {method: "GET"}) // "data.json"
+    fetch("/data.json", {method: "GET"})
     .then(function(response) {
         return response.json();
     }).then(function(json) {
-        // createPage(pageElem, ['pageTitle', 'openInNewTabButton', 'pageIframe']);
-        // showPage(document.querySelector('#pageTitle'), document.querySelector('#openInNewTabButton'), document.querySelector('#pageIframe'), json[Object.keys(json)[1]][currentPageID].title, json[Object.keys(json)[1]][currentPageID].link + 'index.html');
-        // showPage(document.querySelector('#pageTitle'), document.querySelector('#openInNewTabButton'), document.querySelector('#pageIframe'), 'Test page', 'pages/test/index.html');
+        let currentPageID = sessionStorage.getItem('currentPageID') == undefined ? 0 : sessionStorage.getItem('currentPageID');
+        let currentPageTitle = json[Object.keys(json)[1]][currentPageID].title;
+        let currentPageLink = json[Object.keys(json)[1]][currentPageID].link + 'index.html';
+
+        createPage(document.querySelector('#page'), ['pageTitle', 'pageContent']);
+        showPage(document.querySelector('#pageTitle'), document.querySelector('#pageContent'), currentPageTitle, currentPageLink);
+        // showPage(document.querySelector('#pageTitle'), document.querySelector('#pageContent'), 'Test page', 'pages/test/index.html');
 
         pageStatus = 0;
     }).catch(function(ex) {
@@ -50,7 +35,7 @@ function showLoadingOverlay(overlayElem, contentElem) {
             // showRefreshBlock();
         } else {
             overlayElem.style.display = 'none';
-            contentElem.style.display = 'flex';
+            contentElem.style.display = 'block';
             clearInterval(pageLoadingInterval);
         }
     }, intervalValue);
@@ -59,51 +44,20 @@ function showLoadingOverlay(overlayElem, contentElem) {
 function createPage(pageElem, idList) {
     let pageTitle = document.createElement('p');
     pageTitle.id = idList[0];
-    let openInNewTabButton = document.createElement('a');
-    openInNewTabButton.id = idList[1];
-    openInNewTabButton.innerHTML = 'Open in new tab';
-    let pageIframe = document.createElement('iframe');
-    pageIframe.id = idList[2];
-    pageIframe.setAttribute('frameborder', 0);
-    pageIframe.setAttribute('scrolling', 'no');
+    let pageContent = document.createElement('div');
+    pageContent.id = idList[1];
 
     pageElem.appendChild(pageTitle);
-    pageElem.appendChild(openInNewTabButton);
-    pageElem.appendChild(pageIframe);
+    pageElem.appendChild(pageContent);
 }
 
-function showPage(titleElem, openInNewTabButtonElem, iframeElem, title, link) {
+function showPage(titleElem, contentElem, title, link) {
     titleElem.innerHTML = title;
-    openInNewTabButtonElem.href = link;
-    iframeElem.src = link;
 
-    iframeElem.onload = function() {
-        let postMessageListener = iframeElem.addEventListener('message', (event) => {
-            let eventName = event.data[0];
-            let data = event.data[1];
-            if (eventName == 'iframeContentHeight') {
-                fixIframeHeight(data);
-                window.addEventListener('resize', function() {
-                    fixIframeHeight(data);
-                });
-
-                removeEventListener('message', postMessageListener, false);
-            }
-        }, false);
-    }
-}
-
-function fixIframeHeight(height) {
-    console.log('hi')
-    const wrapperElem = document.querySelector('#wrapper');
-    const iframeElem = document.querySelector('#pageIframe');
-
-    wrapperElemHeight = wrapperElem.scrollHeight;
-    iframeElemHeight = iframeElem.scrollHeight;
-
-    if (height > wrapperElemHeight - iframeElemHeight) {
-        wrapperElem.style.height = wrapperElemHeight - iframeElemHeight + height + 'px';
-    } else {
-
-    }
+    fetch(link, {method: "GET"})
+    .then((res) => {
+        res.text().then((text) => {
+            contentElem.innerHTML = text;
+        });
+    });
 }
